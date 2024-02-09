@@ -94,7 +94,7 @@ class RunningAverageDict:
         return {key: value.get_value() for key, value in self._dict.items()}
 
 
-def colorize(value, vmin=None, vmax=None, cmap='gray_r', invalid_val=-99, invalid_mask=None, background_color=(128, 128, 128, 255), gamma_corrected=False, value_transform=None):
+def colorize(value, vmin=None, vmax=None, cmap='magma_r', invalid_val=-99, invalid_mask=None, background_color=(128, 128, 128, 255), gamma_corrected=False, value_transform=None):
     """Converts a depth map to a color image.
 
     Args:

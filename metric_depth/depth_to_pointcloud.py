@@ -24,7 +24,7 @@ FINAL_HEIGHT = 256
 FINAL_WIDTH = 256
 INPUT_DIR = './my_test/input'
 OUTPUT_DIR = './my_test/output'
-DATASET = 'nyu' # Lets not pick a fight with the model's dataloader
+DATASET = 'kitti' # Lets not pick a fight with the model's dataloader
 
 def process_images(model):
     if not os.path.exists(OUTPUT_DIR):
@@ -73,7 +73,7 @@ def main(model_name, pretrained_resource):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-m", "--model", type=str, default='zoedepth', help="Name of the model to test")
-    parser.add_argument("-p", "--pretrained_resource", type=str, default='local::./checkpoints/depth_anything_metric_depth_indoor.pt', help="Pretrained resource to use for fetching weights.")
+    parser.add_argument("-p", "--pretrained_resource", type=str, default='local::./checkpoints/depth_anything_metric_depth_outdoor.pt', help="Pretrained resource to use for fetching weights.")
 
     args = parser.parse_args()
     main(args.model, args.pretrained_resource)
