@@ -56,7 +56,7 @@ def fix_random_seed(seed: int):
     torch.backends.cudnn.benchmark = True
 
 
-def load_ckpt(config, model, checkpoint_dir="./checkpoints", ckpt_type="best"):
+def load_ckpt(config, model, checkpoint_dir="/home/emilia/MasterOfFish/DepthAny/metric_depth/checkpoints", ckpt_type="best"):
     import glob
     import os
 

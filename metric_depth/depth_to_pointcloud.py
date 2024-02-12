@@ -10,7 +10,7 @@ import torch
 import numpy as np
 from PIL import Image
 import torchvision.transforms as transforms
-import open3d as o3d
+# import open3d as o3d
 from tqdm import tqdm
 from zoedepth.models.builder import build_model
 from zoedepth.utils.config import get_config
@@ -56,10 +56,10 @@ def process_images(model):
             points = np.stack((np.multiply(x, z), np.multiply(y, z), z), axis=-1).reshape(-1, 3)
             colors = np.array(resized_color_image).reshape(-1, 3) / 255.0
 
-            pcd = o3d.geometry.PointCloud()
-            pcd.points = o3d.utility.Vector3dVector(points)
-            pcd.colors = o3d.utility.Vector3dVector(colors)
-            o3d.io.write_point_cloud(os.path.join(OUTPUT_DIR, os.path.splitext(os.path.basename(image_path))[0] + ".ply"), pcd)
+            # pcd = o3d.geometry.PointCloud()
+            # pcd.points = o3d.utility.Vector3dVector(points)
+            # pcd.colors = o3d.utility.Vector3dVector(colors)
+            # o3d.io.write_point_cloud(os.path.join(OUTPUT_DIR, os.path.splitext(os.path.basename(image_path))[0] + ".ply"), pcd)
         except Exception as e:
             print(f"Error processing {image_path}: {e}")
 
@@ -73,7 +73,7 @@ def main(model_name, pretrained_resource):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-m", "--model", type=str, default='zoedepth', help="Name of the model to test")
-    parser.add_argument("-p", "--pretrained_resource", type=str, default='local::./checkpoints/depth_anything_metric_depth_outdoor.pt', help="Pretrained resource to use for fetching weights.")
+    parser.add_argument("-p", "--pretrained_resource", type=str, default='local::/checkpoints/depth_anything_metric_depth_outdoor.pt', help="Pretrained resource to use for fetching weights.")
 
     args = parser.parse_args()
     main(args.model, args.pretrained_resource)

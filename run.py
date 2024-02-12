@@ -13,9 +13,9 @@ from depth_anything.util.transform import Resize, NormalizeImage, PrepareForNet
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--img-path', type=str)
-    parser.add_argument('--outdir', type=str, default='./vis_depth')
-    parser.add_argument('--encoder', type=str, default='vitl', choices=['vits', 'vitb', 'vitl'])
+    parser.add_argument('--img-path', type=str, default="./metric_depth/my_test/input/frame_0.jpg")
+    parser.add_argument('--outdir', type=str, default='./metric_depth/my_test/output')
+    parser.add_argument('--encoder', type=str, default='vits', choices=['vits', 'vitb', 'vitl'])
     
     parser.add_argument('--pred-only', dest='pred_only', action='store_true', help='only display the prediction')
     parser.add_argument('--grayscale', dest='grayscale', action='store_true', help='do not apply colorful palette')

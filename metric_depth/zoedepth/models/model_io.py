@@ -23,6 +23,7 @@
 # File author: Shariq Farooq Bhat
 
 import torch
+import os
 
 def load_state_dict(model, state_dict):
     """Load state_dict into model, handling DataParallel and DistributedDataParallel. Also checks for "model" key in state_dict.
@@ -85,7 +86,9 @@ def load_state_from_resource(model, resource: str):
 
     elif resource.startswith('local::'):
         path = resource.split('local::')[1]
-        return load_wts(model, path)
+        base_dir = '/home/emilia/MasterOfFish/DepthAny/metric_depth'
+        checkpoint_path = base_dir + '/' + path
+        return load_wts(model, checkpoint_path)
         
     else:
         raise ValueError("Invalid resource type, only url:: and local:: are supported")
