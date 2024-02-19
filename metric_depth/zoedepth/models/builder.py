@@ -23,6 +23,9 @@
 # File author: Shariq Farooq Bhat
 
 from importlib import import_module
+import sys
+sys.path.append("/home/emilia/MasterOfFish/DepthAny/metric_depth")
+
 from zoedepth.models.depth_model import DepthModel
 
 def build_model(config) -> DepthModel:
